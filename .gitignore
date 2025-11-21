@@ -1,0 +1,32 @@
+# --- Seguridad (¡CRÍTICO!) ---
+# Nunca subas tus claves API o contraseñas
+.env
+.env.local
+.env.*
+
+# --- Python ---
+# Archivos compilados que genera Python automáticamente
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Base de Datos ---
+# No queremos subir el historial del chat local al repositorio
+*.db
+*.sqlite3
+memory.db
+memory.db-journal
+
+# --- Entornos Virtuales ---
+# Si creaste el venv dentro del backend por error, esto lo ignora
+venv/
+.venv/
+env/
+
+# --- IDEs y Sistema Operativo ---
+# Carpetas de configuración de editores
+.vscode/
+.idea/
+# Archivos de sistema (Mac/Windows)
+.DS_Store
+Thumbs.db
