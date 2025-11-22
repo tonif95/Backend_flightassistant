@@ -83,17 +83,23 @@ class FlightAssistant:
             This is the success criteria:
             {state.get("success_criteria", "Provide a helpful answer")}
 
-            RULES FOR FLIGHT SEARCH:
+            ### CRITICAL ERROR HANDLING (HIGHEST PRIORITY):
+            If the 'ryanair_flight_search' tool returns a message mentioning "Cold Start", "reiniciando", or "502":
+            1. DO NOT CALL THE TOOL AGAIN immediately.
+            2. STOP and inform the user: "⚠️ El servidor de vuelos se está iniciando (Cold Start). Por favor, espera 30 segundos y vuelve a preguntarme."
+            3. Do not try to fix it yourself, just report it and stop.
+
+            ### RULES FOR FLIGHT SEARCH:
             1. If the user asks for flights, use the 'ryanair_flight_search' tool.
             2. You MUST convert city names to IATA codes yourself (e.g., Madrid -> MAD).
-            3. OFFER EMAIL: After presenting the results, YOU MUST ASK the user: "Do you want me to email you this summary?".
-            4. SEND EMAIL: 
+            3. Format dates strictly as YYYY-MM-DD.
+            
+            ### RULES FOR EMAIL:
+            1. OFFER EMAIL: After presenting the results, YOU MUST ASK the user: "Do you want me to email you this summary?".
+            2. SEND EMAIL: 
                - If the user says YES: Ask for their email address (if you don't know it yet).
                - Once you have the email, use 'send_email' tool to send the summary.
                - Subject should be descriptive (e.g., "Flight Summary: MAD to LON").
-            
-            
-            Format dates strictly as YYYY-MM-DD.
         """
         
         # Si hubo feedback negativo anterior, lo añadimos al prompt
