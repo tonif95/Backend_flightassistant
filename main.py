@@ -44,7 +44,7 @@ app = FastAPI(
 # Permite que tu frontend (que estará en otro dominio) hable con este backend.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # En producción, cambia "*" por la URL de tu frontend en Render
+    allow_origins=["https://frontend-flightassistant.onrender.com/"],  # En producción, cambia "*" por la URL de tu frontend en Render
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
